@@ -29,7 +29,7 @@ Render offers powerful deployment options with easy scalability. Follow these st
 
    Start by clicking the **"Deploy to Render"** button on the GitHub repository.
 
-   .. figure:: images/render_deploy_button.png
+   .. figure:: _static/images/render_deploy_button.png
       :alt: Deploy to Render Button
       :align: center
 
@@ -40,19 +40,29 @@ Render offers powerful deployment options with easy scalability. Follow these st
    - **Choose a Blueprint Name:** Enter a name for your blueprint, e.g., **"Blueprint Name"**.
    - **Deploy Blueprint:** Click the **"Deploy Blueprint"** button.
 
-   .. figure:: images/render_deploy_blueprint.png
+   .. figure:: _static/images/render_deploy_blueprint.png
       :alt: Deploy Blueprint on Render
       :align: center
 
       **Figure 2:** Deploying Blueprint on Render.
 
-3. **Configure Environment Variables**
+3. **Navigate to the Worker**
+   - **Navigate to the Background Worker:** Click on the name of the background worker, e.g., **options-butterfly-condor-worker-afas (Starter)** so you can configure theis specific bot worker (we are currently in the blueprint configuration, not the bot itself).
 
-   - **Navigate to Environment Settings:** Click on the name of the background worker, e.g., **options-butterfly-condor-worker-jljk (Starter)**.
+   .. figure:: _static/images/render_worker.png
+      :alt: Worker on Render
+      :align: center
+
+      **Figure 3:** Worker on Render.
+
+4. **Configure Environment Variables**
+
+  
    - **Select Environment:** On the worker's page, select **Environment** from the left sidebar.
-   - **Edit Environment Variables:** Click **Edit** and fill in the required keys as detailed in the :ref:`Secrets Configuration <secrets-configuration>` section.
+   - **Edit Environment Variables:** Click **Edit** and fill in the required keys as detailed in the :ref:`Secrets Configuration <secrets-configuration>` section. Once you have added your values for the environment variables, click **Save**.
+   - **Delete Unnecessary Variables:** If you have any unnecessary environment variables, you can delete them by clicking the **Delete (trashcan)** button next to the variable. One example of an unnecessary variable is `POLYGON_API_KEY` which is only used if you are backtesting.
 
-   .. figure:: images/render_worker_environment.png
+   .. figure:: _static/images/render_worker_environment.png
       :alt: Environment Settings on Render
       :align: center
 
@@ -60,27 +70,41 @@ Render offers powerful deployment options with easy scalability. Follow these st
 
    .. note::
 
-      **Note:** Only the environment variables required for your chosen broker are mandatory. Refer to the :ref:`Secrets Configuration <secrets-configuration>` section to see which ones are mandatory and which are optional.
+      **Note:** Only the environment variables required for your chosen broker are mandatory. Refer to the :ref:`Secrets Configuration <secrets-configuration>` section to see which ones are mandatory and which are optional. If an optional environment variable is not needed, **you can delete it.**
 
-4. **Restart the Service**
+5. **Restart the Service**
 
-   After configuring the environment variables, navigate to the top right corner and click **"Manual Deploy"**, then **"Restart Service"** to apply the changes.
+   After configuring the environment variables, navigate to the top right corner and click **"Manual Deploy"**, then **"Deploy latest commit"** to apply the changes.
 
-   .. figure:: images/render_restart_service.png
+   .. figure:: _static/images/render_redeploy.png
       :alt: Restart Service on Render
       :align: center
 
-      **Figure 4:** Restarting Service on Render.
+      **Figure 4:** Redeploying the Service on Render using the latest commit.
 
-5. **Finalize Deployment**
+6. **View The Logs**
 
-   Once the service restarts without errors, your deployment on Render is successful! You can monitor the deployment status and view logs on the left sidebar to ensure everything is running smoothly.
+   - **Check the Logs:** Navigate to the **Logs** tab on the left to view the deployment logs and ensure that there are no errors.
 
-   .. figure:: images/render_finalize_deployment.png
-      :alt: Finalize Deployment on Render
+   .. figure:: _static/images/render_logs.png
+      :alt: Logs on Render
       :align: center
 
-      **Figure 5:** Finalizing Deployment on Render.
+      **Figure 5:** Viewing Logs on Render.
+
+7. **Monitor Bot Performance**
+
+   - **Monitor Performance:** Go to your broker account to monitor the bot's performance and ensure that it is executing trades as expected.
+
+    .. figure:: _static/images/replit_monitor_bot.png
+        :alt: Monitor bot performance
+        :align: center
+    
+        **Figure 13:** Monitoring bot performance in Replit.
+
+    .. note::
+    
+        **Note:** Monitor the bot's performance regularly to ensure that it is functioning correctly and making profitable trades.
 
 Deploying to Replit
 -------------------
@@ -91,7 +115,7 @@ Replit is a versatile platform that allows you to deploy applications quickly. F
 
    Start by clicking the **"Deploy on Replit"** button on the GitHub repository.
 
-   .. figure:: images/deploy_replit_button.png
+   .. figure:: _static/images/deploy_replit_button.png
       :alt: Deploy on Replit Button
       :align: center
 
@@ -104,7 +128,7 @@ Replit is a versatile platform that allows you to deploy applications quickly. F
    - Go to **Tools** in the sidebar.
    - Select **Secrets** at the bottom left corner.
 
-   .. figure:: images/replit_tools_secrets.png
+   .. figure:: _static/images/replit_tools_secrets.png
       :alt: Replit Tools -> Secrets
       :align: center
 
@@ -114,7 +138,7 @@ Replit is a versatile platform that allows you to deploy applications quickly. F
 
    In the **Secrets** tab, add the necessary environment variables as detailed in the :ref:`Secrets Configuration <secrets-configuration>` section.
 
-   .. figure:: images/replit_add_secret.png
+   .. figure:: _static/images/replit_add_secret.png
       :alt: Adding a new secret in Replit
       :align: center
 
@@ -124,26 +148,75 @@ Replit is a versatile platform that allows you to deploy applications quickly. F
 
    After adding all required secrets, click **Run**. This step is crucial as it installs all necessary libraries and ensures that the secrets are correctly configured.
 
-   .. figure:: images/replit_run.png
+   When you press **Run**, the application will start running in the console. You can see the logs in real-time to ensure that everything is working as expected.
+
+   .. figure:: _static/images/replit_run.png
       :alt: Running the application in Replit
       :align: center
 
       **Figure 9:** Running the application in Replit.
 
-5. **Deployment**
+   .. figure:: _static/images/replit_logs.png
+      :alt: Viewing logs in Replit
+      :align: center
+
+      **Figure 10:** Viewing logs in Replit.
+
+5. **Deployment Part 1**
 
    - **Click Deploy:** Navigate to **Deploy** located under **Tools** in the top right or within the **Background Workers** section.
    - **Select Reserved VM:** The strategies will only work on a **Reserved VM**, none of the other options will work.
-   - **Downgrade vCPU:** We recommend downgrading to **0.25 vCPU** to reduce costs. As of today, it costs **$6/month** compared to the default **$12/month** for **0.5 vCPU**.
-   - **Select Background Worker:** Choose **"Background Worker"**.
 
-   .. figure:: images/replit_reserved_vm.png
+   .. figure:: _static/images/replit_reserved_vm.png
       :alt: Select Reserved VM and Background Worker
       :align: center
 
       **Figure 10:** Selecting Reserved VM and Background Worker on Replit.
 
    **Note:** Ensure that you have downgraded the vCPU before selecting the Background Worker to optimize costs effectively.
+
+6. **Deployment Part 2**
+   - **Downgrade vCPU:** We recommend downgrading to **0.25 vCPU** to reduce costs. As of today, it costs **$6/month** compared to the default **$12/month** for **0.5 vCPU**.
+   - **Select Background Worker:** Choose **"Background Worker"**.
+   - **Click Deploy:** Click **"Deploy"** to deploy your application.
+   - **Wait for Deployment:** The deployment process may take a few minutes. Once completed, you will see a success message.
+
+    .. figure:: _static/images/replit_deploy.png
+        :alt: Deploying the application in Replit
+        :align: center
+    
+        **Figure 11:** Deploying the application in Replit.
+
+    .. figure:: _static/images/replit_deploy_process.png
+        :alt: Deployment process
+        :align: center
+
+        **Figure 12:** Deployment process in Replit.
+
+7. **Check The Logs**
+
+   - **View Logs:** Navigate to the **Logs** tab in **Deployment** to view the deployment logs and ensure that there are no errors.
+
+   .. figure:: _static/images/replit_deploy_logs.png
+      :alt: Logs on Replit
+      :align: center
+
+      **Figure 12:** Viewing Logs on Replit.
+
+8. **Monitor Bot Performance**
+
+   - **Monitor Performance:** Go to your broker account to monitor the bot's performance and ensure that it is executing trades as expected.
+
+    .. figure:: _static/images/replit_monitor_bot.png
+        :alt: Monitor bot performance
+        :align: center
+    
+        **Figure 13:** Monitoring bot performance in Replit.
+
+    .. note::
+    
+        **Note:** Monitor the bot's performance regularly to ensure that it is functioning correctly and making profitable trades.
+
 
 Secrets Configuration
 =====================
@@ -166,110 +239,143 @@ To support different brokers, we have separate sections. Choose the one that cor
 Tradier Configuration
 ---------------------
 
-.. table:: Tradier Configuration
+Tradier is great because they can trade stocks, options, and soon futures. Tradier also offers an incredible plan for $10/month, providing commission-free options trading. This can save a lot of money for those day trading options or engaging in similar activities. To create an account, visit the `Tradier <https://tradier.com/>`_ website.
 
-   +------------------------+-----------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | **Secret**             | **Description**                                                                                           | **Example**                                  |
-   +========================+===========================================================================================================+==============================================+
-   | TRADIER_ACCESS_TOKEN   | Your Access Token from Tradier                                                                            | qTRz3zUrl9244AHUw4AoyAPgvYra                  |
-   +------------------------+-----------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | TRADIER_ACCOUNT_NUMBER | Your Account Number from Tradier                                                                            | VA12204793                                    |
-   +------------------------+-----------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | TRADIER_IS_PAPER       | **Set to "True"** to use the paper trading API, **set to "False"** to use the real money trading API. Defaults to True. | True                                           |
-   +------------------------+-----------------------------------------------------------------------------------------------------------+----------------------------------------------+
+.. list-table:: Tradier Configuration
+   :widths: 25 50 25
+   :header-rows: 1
 
-   Tradier is great because they can trade stocks, options, and soon futures. Tradier also offers an incredible plan for $10/month, providing commission-free options trading. This can save a lot of money for those day trading options or engaging in similar activities. To create an account, visit the `Tradier <https://tradier.com/>`_ website.
+   * - **Secret**
+     - **Description**
+     - **Example**
+   * - TRADIER_ACCESS_TOKEN
+     - Your Access Token from Tradier
+     - qTRz3zUrl9244AHUw4AoyAPgvYra
+   * - TRADIER_ACCOUNT_NUMBER
+     - Your Account Number from Tradier
+     - VA12204793
+   * - TRADIER_IS_PAPER
+     - **Set to "True"** to use the paper trading API, **set to "False"** to use the real money trading API. Defaults to True.
+     - True
 
 Alpaca Configuration
 --------------------
 
-.. table:: Alpaca Configuration
+Alpaca is great because they're a commission-free broker specifically designed for API trading, which aligns perfectly with our platform. Alpaca supports trading stocks, crypto, and soon options, with their APIs working seamlessly for automated trading strategies. To create an account, visit the `Alpaca <https://alpaca.markets/>`_ website.
 
-   +---------------------+------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | **Secret**          | **Description**                                                                                            | **Example**                                  |
-   +=====================+============================================================================================================+==============================================+
-   | ALPACA_API_KEY      | Your API key from your Alpaca brokerage account                                                           | PK7T6YVAX6PMH1EM20YN                           |
-   +---------------------+------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | ALPACA_API_SECRET   | Your secret key from your Alpaca brokerage account                                                        | 9WgJLS3wIXq54FCpHwwZjCp8JCfJfKuwSrYskKMA        |
-   +---------------------+------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | ALPACA_IS_PAPER     | **Set to "True"** to use the Alpaca paper trading API, **set to "False"** to use the Alpaca real money trading API. Defaults to True. | True                                           |
-   +---------------------+------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+.. list-table:: Alpaca Configuration
+   :widths: 25 50 25
+   :header-rows: 1
 
-   Alpaca is great because they're a commission-free broker specifically designed for API trading, which aligns perfectly with our platform. Alpaca supports trading stocks, crypto, and soon options, with their APIs working seamlessly for automated trading strategies. To create an account, visit the `Alpaca <https://alpaca.markets/>`_ website.
+   * - **Secret**
+     - **Description**
+     - **Example**
+   * - ALPACA_API_KEY
+     - Your API key from your Alpaca brokerage account
+     - PK7T6YVAX6PMH1EM20YN
+   * - ALPACA_API_SECRET
+     - Your secret key from your Alpaca brokerage account
+     - 9WgJLS3wIXq54FCpHwwZjCp8JCfJfKuwSrYskKMA
+   * - ALPACA_IS_PAPER
+     - **Set to "True"** to use the Alpaca paper trading API, **set to "False"** to use the Alpaca real money trading API. Defaults to True.
+     - True
 
 Coinbase Configuration
 ----------------------
 
-.. table:: Coinbase Configuration
+Coinbase is a cryptocurrency broker that is easy to set up and operates across all United States, including New York, which is typically challenging to find for crypto brokers. It offers a wide range of cryptocurrencies with user-friendly APIs. To create an account, visit the `Coinbase <https://www.coinbase.com/>`_ website.
 
-   +----------------------+-------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | **Secret**           | **Description**                                                                                             | **Example**                                  |
-   +======================+=============================================================================================================+==============================================+
-   | COINBASE_API_KEY     | Your API key for Coinbase. **Required** if you are using Coinbase as your broker.                             | STeea9fhIsznTMpIHQjUdEqOliTJ0JAvZ              |
-   +----------------------+-------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | COINBASE_API_SECRET  | Your API secret for Coinbase. **Required** if you are using Coinbase as your broker.                          | NUzcnprsXjxxOUxRhQE5k2K1XnqLPcKH2XCUTIfkCw==   |
-   +----------------------+-------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | COINBASE_IS_SANDBOX  | **Set to "True"** to use the Coinbase sandbox (paper trading) API, **set to "False"** to use the Coinbase real money trading API. Defaults to False. | False                                         |
-   +----------------------+-------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+.. list-table:: Coinbase Configuration
+   :widths: 25 50 25
+   :header-rows: 1
 
-   Coinbase is a cryptocurrency broker that is easy to set up and operates across all United States, including New York, which is typically challenging to find for crypto brokers. It offers a wide range of cryptocurrencies with user-friendly APIs. To create an account, visit the `Coinbase <https://www.coinbase.com/>`_ website.
+   * - **Secret**
+     - **Description**
+     - **Example**
+   * - COINBASE_API_KEY
+     - Your API key for Coinbase. **Required** if you are using Coinbase as your broker.
+     - STeea9fhIsznTMpIHQjUdEqOliTJ0JAvZ
+   * - COINBASE_API_SECRET
+     - Your API secret for Coinbase. **Required** if you are using Coinbase as your broker.
+     - NUzcnprsXjxxOUxRhQE5k2K1XnqLPcKH2XCUTIfkCw==
+   * - COINBASE_IS_SANDBOX
+     - **Set to "True"** to use the Coinbase sandbox (paper trading) API, **set to "False"** to use the Coinbase real money trading API. Defaults to False.
+     - False
 
 Kraken Configuration
 --------------------
 
-.. table:: Kraken Configuration
+Kraken is an excellent cryptocurrency broker offering very low fees and a wide range of cryptocurrencies, likely more than Coinbase. It is ideal for users focused on crypto trading with competitive pricing. To create an account, visit the `Kraken <https://www.kraken.com/>`_ website.
 
-   +---------------------+------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | **Secret**          | **Description**                                                                                            | **Example**                                  |
-   +=====================+============================================================================================================+==============================================+
-   | KRAKEN_API_KEY      | Your API key from Kraken. **Required** if you are using Kraken as your broker.                               | XyZ1234567890abcdef                           |
-   +---------------------+------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | KRAKEN_API_SECRET   | Your API secret for Kraken. **Required** if you are using Kraken as your broker.                            | abcdef1234567890abcdef1234567890abcdef1234    |
-   +---------------------+------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+.. list-table:: Kraken Configuration
+   :widths: 25 50 25
+   :header-rows: 1
 
-   Kraken is an excellent cryptocurrency broker offering very low fees and a wide range of cryptocurrencies, likely more than Coinbase. It is ideal for users focused on crypto trading with competitive pricing. To create an account, visit the `Kraken <https://www.kraken.com/>`_ website.
+   * - **Secret**
+     - **Description**
+     - **Example**
+   * - KRAKEN_API_KEY
+     - Your API key from Kraken. **Required** if you are using Kraken as your broker.
+     - XyZ1234567890abcdef
+   * - KRAKEN_API_SECRET
+     - Your API secret for Kraken. **Required** if you are using Kraken as your broker.
+     - abcdef1234567890abcdef1234567890abcdef1234
 
 Interactive Brokers Configuration
 --------------------------------
 
-.. table:: Interactive Brokers Configuration
+Interactive Brokers is ideal for international users as they offer a wide array of asset classes, including stocks, options, futures, forex, CFDs, and more. Their global presence makes them suitable for users around the world. To create an account, visit the `Interactive Brokers <https://www.interactivebrokers.com/>`_ website.
 
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | **Secret**                  | **Description**                                                                                              | **Example**                                  |
-   +=============================+==============================================================================================================+==============================================+
-   | INTERACTIVE_BROKERS_PORT    | Socket port for Interactive Brokers.         | 7497                                         |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | INTERACTIVE_BROKERS_CLIENT_ID| Client ID for Interactive Brokers.          | 123456                                       |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | INTERACTIVE_BROKERS_IP       | IP address for Interactive Brokers (defaults to "127.0.0.1"). **Required** if you are using Interactive Brokers as your broker. | 127.0.0.1                                     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | IB_SUBACCOUNT                | Subaccount for Interactive Brokers. **Required** if you are using Interactive Brokers as your broker.        | Subaccount1                                  |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------+----------------------------------------------+
+.. list-table:: Interactive Brokers Configuration
+   :widths: 25 50 25
+   :header-rows: 1
 
-   Interactive Brokers is ideal for international users as they offer a wide array of asset classes, including stocks, options, futures, forex, CFDs, and more. Their global presence makes them suitable for users around the world. To create an account, visit the `Interactive Brokers <https://www.interactivebrokers.com/>`_ website.
+   * - **Secret**
+     - **Description**
+     - **Example**
+   * - INTERACTIVE_BROKERS_PORT
+     - Socket port for Interactive Brokers.
+     - 7497
+   * - INTERACTIVE_BROKERS_CLIENT_ID
+     - Client ID for Interactive Brokers.
+     - 123456
+   * - INTERACTIVE_BROKERS_IP
+     - IP address for Interactive Brokers (defaults to "127.0.0.1"). **Required** if you are using Interactive Brokers as your broker.
+     - 127.0.0.1
+   * - IB_SUBACCOUNT
+     - Subaccount for Interactive Brokers. **Required** if you are using Interactive Brokers as your broker.
+     - Subaccount1
 
 General Environment Variables
 ============================
 
 In addition to broker-specific secrets, the following environment variables are required for the strategy to function correctly:
 
-.. table:: General Environment Variables
+.. list-table:: General Environment Variables
+   :widths: 25 50 25
+   :header-rows: 1
 
-   +--------------------------+----------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | **Secret**               | **Description**                                                                                          | **Example**                                  |
-   +==========================+==========================================================================================================+==============================================+
-   | LIVE_CONFIG              | Your live config file, only needed for strategies that have multiple configurations (there will be a folder named "configurations" in the src/ folder) and if you are running the strategy live.        | paper_1                                       |
-   +--------------------------+----------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | IS_BACKTESTING           | **(Optional)** Set to **"True"** to run the strategy in backtesting mode, set to **"False"** to run the strategy live (defaults to False). | False                                         |
-   +--------------------------+----------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | POLYGON_API_KEY          | **(Optional)** Your API key from your Polygon account, only needed if you are backtesting.              | a7py0zIdhxde6QkX8OjjKNp7cD87hwKU              |
-   +--------------------------+----------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | DISCORD_WEBHOOK_URL      | **(Optional)** Your Discord webhook URL, only needed if you want to send notifications to Discord. Learn how to get a Discord webhook URL here: `Discord Webhooks <https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks>`_ | https://discord.com/api/webhooks/123456789/    |
-   +--------------------------+----------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | DB_CONNECTION_STR        | **(Optional)** Your connection string to your account history database, only needed if you want to save your account history to a database. | sqlite:///account_history.db                  |
-   +--------------------------+----------------------------------------------------------------------------------------------------------+----------------------------------------------+
-   | STRATEGY_NAME            | **(Optional)** The name of the strategy. This will change the strategy_id in the database and in the Discord messages. | My Strategy                                   |
-   +--------------------------+----------------------------------------------------------------------------------------------------------+----------------------------------------------+
+   * - **Secret**
+     - **Description**
+     - **Example**
+   * - LIVE_CONFIG
+     - Your live config file, only needed for strategies that have multiple configurations (there will be a folder named "configurations" in the src/ folder) and if you are running the strategy live.
+     - paper_1
+   * - IS_BACKTESTING
+     - **(Optional)** Set to **"True"** to run the strategy in backtesting mode, set to **"False"** to run the strategy live (defaults to False).
+     - False
+   * - POLYGON_API_KEY
+     - **(Optional)** Your API key from your Polygon account, only needed if you are backtesting.
+     - a7py0zIdhxde6QkX8OjjKNp7cD87hwKU
+   * - DISCORD_WEBHOOK_URL
+     - **(Optional)** Your Discord webhook URL, only needed if you want to send notifications to Discord. Learn how to get a Discord webhook URL here: `Discord Webhooks <https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks>`_
+     - https://discord.com/api/webhooks/123456789/
+   * - DB_CONNECTION_STR
+     - **(Optional)** Your connection string to your account history database, only needed if you want to save your account history to a database.
+     - sqlite:///account_history.db
+   * - STRATEGY_NAME
+     - **(Optional)** The name of the strategy. This will change the strategy_id in the database and in the Discord messages.
+     - My Strategy
 
 .. tip::
 
