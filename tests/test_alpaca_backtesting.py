@@ -182,7 +182,6 @@ class TestAlpacaBacktesting:
             parameters={
                 "asset": Asset('AMZN', asset_type='stock'),
                 "sleeptime": "1M",
-                "timestep": timestep,
                 "market": "NYSE"
             },
 
