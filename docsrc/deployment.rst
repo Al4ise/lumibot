@@ -325,10 +325,10 @@ Coinbase is a cryptocurrency broker that is easy to set up and operates across a
      - **Example**
    * - COINBASE_API_KEY_NAME
      - Your API key name/identifier for Coinbase. **Required** if you are using Coinbase as your broker.
-     - organizations/a7df3e75-5gg5-4b0d-805c-e91c02fd63b8/apiKeys/1abb999e-8442-4607-lkc7-423eb8d478e3
+     - organizations/YOUR_ORG_ID/apiKeys/YOUR_KEY_ID
    * - COINBASE_PRIVATE_KEY
      - Your private key for Coinbase. **Required** if you are using Coinbase as your broker.  
-     - REMOVED_SECRET\n"
+     - -----BEGIN EC PRIVATE KEY-----\nYOUR_COINBASE_PRIVATE_KEY\n-----END EC PRIVATE KEY-----\n"
    * - COINBASE_API_PASSPHRASE
      - Your API passphrase for Coinbase. **Optional** if you are using Coinbase as your broker.
      - 123456

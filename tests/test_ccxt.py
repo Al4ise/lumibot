@@ -6,23 +6,23 @@ from lumibot.example_strategies.crypto_important_functions import ImportantFunct
 KUCOIN_LIVE = {
     "exchange_id": "kucoin",
     "password": "not_my_pass",
-    "apiKey": "a1b2c3d4",
-    "secret": "REMOVED_SECRET",
+    "apiKey": "test-api-key",
+    "secret": "test-api-secret",
     "sandbox": True,
 }
 
 
 # KRAKEN_CONFIG = {
 #     "exchange_id": "kraken",
-#     "apiKey": "a1b2c3d4",
-#     "secret": "REMOVED_SECRET",
+#     "apiKey": "test-api-key",
+#     "secret": "test-api-secret",
 #     "margin": True,
 #     "sandbox": False,
 # }
 KRAKEN_CONFIG = {
     "exchange_id": "kraken",
-    "apiKey": "REMOVED_SECRET",
-    "secret": "REMOVED_SECRET",
+    "apiKey": "test-api-key",
+    "secret": "test-api-secret",
     "margin": True,
     "sandbox": False,
 }

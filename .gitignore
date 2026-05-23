@@ -47,3 +47,8 @@ data/SRNE_Minute.csv
 *.tmp
 .env
 token.json
+
+# Generated documentation artifacts
+docs/.doctrees/
+docs/_sources/
+docsrc/_build/

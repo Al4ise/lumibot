@@ -19,9 +19,9 @@ Here is an example dictionary of configuration options for Tradier:
 
     TRADIER_CONFIG = {
         # Put your own Tradier key here:
-        "ACCESS_TOKEN": "REMOVED_SECRET",
+        "ACCESS_TOKEN": "YOUR_TRADIER_ACCESS_TOKEN",
         # Put your own Tradier account number here:
-        "ACCOUNT_NUMBER": "VA22904793",
+        "ACCOUNT_NUMBER": "YOUR_TRADIER_ACCOUNT_NUMBER",
         # If you want to use real money you must change this to False
         "PAPER": True,
     }
@@ -31,8 +31,8 @@ or more generally:
 .. code-block:: python
 
     TRADIER_CONFIG = {
-        "ACCESS_TOKEN": "your_access_token",
-        "ACCOUNT_NUMBER": "your_account_number",
+        "ACCESS_TOKEN": "YOUR_TRADIER_ACCESS_TOKEN",
+        "ACCOUNT_NUMBER": "YOUR_TRADIER_ACCOUNT_NUMBER",
         "PAPER": True,
     }
 
@@ -72,8 +72,8 @@ Here is an example of a simple strategy that uses Tradier as the broker:
     from lumibot.strategies import Strategy
 
     TRADIER_CONFIG = {
-        "ACCESS_TOKEN": "your_access_token",
-        "ACCOUNT_NUMBER": "your_account_number",
+        "ACCESS_TOKEN": "YOUR_TRADIER_ACCESS_TOKEN",
+        "ACCOUNT_NUMBER": "YOUR_TRADIER_ACCOUNT_NUMBER",
         "PAPER": True,
     }
 
